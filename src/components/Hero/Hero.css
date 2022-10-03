@@ -51,3 +51,8 @@
 .hero-wrapper section:first-child p{
     color: white;
 }
+
+.hero-wrapper h1 {
+    font-size: 40px;
+    font-weight: bolder;
+}
