@@ -16,7 +16,7 @@ const Sidebar = () => {
     }
     return (
         <aside 
-            className={`${isOpen? 'translate-x-0 flex flex-col bg-slate-200 p-5 absolute w-11/12 z-10 top-0 left-0 h-screen': '-translate-x-[100%]'} transition-slow`}
+            className={`${isOpen? 'translate-x-0 flex flex-col bg-slate-200 p-5 absolute w-11/12 z-10 top-0 left-0 h-screen': '-translate-x-[100%]'} lg:hidden transition-slow`}
         >
             <FaTimes 
                 className='text-2xl text-primary font-bold absolute top-5 right-5 bg-slate-400 rounded-full'
