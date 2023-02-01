@@ -44,10 +44,12 @@ const FeaturedServiceProviders = () => {
         <section 
             className='bg-slate-100 main-x-p main-y-p group'
         >
-            <h2 className='text-center lg:text-left text-3xl lg:text-4xl font-extrabold'>Top service providers</h2>
-            <hr 
-                className='border-8 rounded-lg border-primary w-[50%] lg:w-[23%] my-2 group-hover:w-10 transition-slow'
-            />
+            <div className='flex flex-col items-center lg:items-start gap-2'>
+                <h2 className='text-center lg:text-left text-3xl lg:text-4xl font-extrabold'>Top service providers</h2>
+                <hr 
+                    className='border-8 rounded-lg border-primary w-[50%] lg:w-[23%] lg:my-2 group-hover:w-10 transition-slow'
+                />
+            </div>
             <div 
                 className='grid grid-cols-1 lg:grid-cols-4 gap-4 mt-10'
             >

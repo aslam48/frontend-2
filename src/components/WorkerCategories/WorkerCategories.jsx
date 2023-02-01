@@ -19,9 +19,9 @@ const WorkerCategories = () => {
 
     return (
         <section 
-            className='flex flex-col gap-3 lg:gap-10 justify-between bg-white main-x-p main-y-p group'
+            className='flex flex-col gap-3 lg:gap-10 justify-between bg-slate-200 main-x-p main-y-p group'
         >
-            <div>
+            <div className='flex flex-col items-center lg:items-start'>
                 <h2 
                     className='text-center lg:text-left text-3xl lg:text-4xl font-extrabold'
                     >
@@ -37,7 +37,7 @@ const WorkerCategories = () => {
                 {
                     categories.map(category => 
                         <CardButton 
-                            extraStyle='bg-slate-100 text-primary border-4 border-primary'
+                            extraStyle='bg-slate-100 text-slate-600 border-2 border-primary my-0'
                             text={category} 
                             key={category}
                             path={`categories/${category}`}

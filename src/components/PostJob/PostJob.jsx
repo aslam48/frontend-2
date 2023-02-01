@@ -14,7 +14,7 @@ const PostJob = () => {
             >
                 <h2 className='text-center lg:text-left text-3xl lg:text-4xl font-extrabold'>Post jobs</h2>
                 <hr 
-                    className='border-8 rounded-lg border-primary w-[50%] lg:w-[23%] my-2 group-hover:w-10 transition-slow'
+                    className='border-8 rounded-lg border-primary w-[50%] lg:w-[23%] lg:my-2 group-hover:w-10 transition-slow'
                 />
                 <p className='lg:w-[80%]'>
                     Post what you want done, describing how you want it and 
