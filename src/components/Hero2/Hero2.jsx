@@ -26,7 +26,7 @@ const Hero = () => {
 
     return (
         <section 
-            className='flex flex-col lg:flex-row justify-between items-center main-x-p py-10 relative h-[400px] gap-5'
+            className='flex flex-col lg:flex-row justify-between items-center main-x-p py-10 relative h-auto gap-5 pb-20'
         >
             <div 
                 className='flex flex-col justify-center item-center lg:items-start text-center lg:text-left'
