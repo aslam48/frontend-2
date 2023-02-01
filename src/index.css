@@ -1,3 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input-icon-custom {
+    @apply absolute left-5 top-4 text-primary;
+  }
+  .main-x-p{
+    @apply lg:px-[10%] px-2;
+  }
+  .main-y-p{ 
+    @apply py-10 lg:py-20;
+  }
+  .transition-slow{ @apply transition-all duration-300;}
+}
+
 *, *::after, *::before{
   box-sizing: border-box;
 }
