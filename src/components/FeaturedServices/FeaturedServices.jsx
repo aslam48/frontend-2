@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import cleaningImage from '../../images/cleaner.jpg'
 import mechanicImage from '../../images/mechanic.jpg'
 import electricianImage from '../../images/electrician.jpg'
@@ -26,9 +26,10 @@ const services = [
 ]
 
 const FeaturedServices = () => {
+    const [fetchedServices, setFetchedServices] = useState([])
   return (
     <section 
-        className='bg-red-50 main-x-p py-10 lg:py-20 group'
+        className='bg-red-50 main-x-p main-y-p group'
     >
         <h2 className='text-center lg:text-left text-3xl lg:text-4xl font-extrabold'>Popular services</h2>
         <hr 
@@ -38,7 +39,12 @@ const FeaturedServices = () => {
             className='grid grid-cols-1 lg:grid-cols-4 gap-4 mt-10'
         >
             {
+                fetchedServices.length < 1? 
+                (
                 services.map(service => <FeaturedService key={service} {...service}/>)
+                ): (
+                fetchedServices.map(service => <FeaturedService key={service} {...service}/>)
+                )
             }
         </div>
     </section>

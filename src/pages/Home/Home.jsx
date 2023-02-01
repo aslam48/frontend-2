@@ -1,4 +1,5 @@
 import React from 'react'
+import FeaturedServiceProviders from '../../components/FeaturedServiceProviders/FeaturedServiceProviders'
 import FeaturedServices from '../../components/FeaturedServices/FeaturedServices'
 import Header from '../../components/Header/Header'
 import Hero2 from '../../components/Hero2/Hero2'
@@ -11,6 +12,7 @@ const Home = () => {
         {/* <Header /> */}
         <Hero2 />
         <FeaturedServices />
+        <FeaturedServiceProviders />
         <Sidebar />
     </main>
   )
