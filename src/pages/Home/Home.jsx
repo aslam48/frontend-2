@@ -12,8 +12,8 @@ import WorkerCategories from '../../components/WorkerCategories/WorkerCategories
 
 const Home = () => {
   return (
-    <main className='w-full overflow-x-hidden'>
-        {/* <Header /> */}
+    <div className='w-full'>
+        <Header />
         <Hero2 />
         <FeaturedServices />
         <FeaturedServiceProviders />
@@ -22,7 +22,7 @@ const Home = () => {
         <WorkerCategories />
         <Footer />
         <Sidebar />
-    </main>
+    </div>
   )
 }
 
