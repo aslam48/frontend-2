@@ -55,43 +55,46 @@ const authSlice = createSlice({
         }
     }, 
 
-    extraReducers: {
-        [localLogin.pending]: (state) =>{
-            state.userLoading = true
-            state.message = 'Please wait...'
-        }, 
-        [localLogin.fulfilled]: (state, action) => {
-            if(action.payload.user){
+    extraReducers: (builder) =>{
+        builder
+            .addCase(localLogin.pending,  (state) =>{
+                state.userLoading = true
+                state.message = 'Please wait...'
+            })
+            .addCase(localLogin.fulfilled, (state, action) => {
+                if(action.payload.user){
+                    state.userLoading = false
+                    state.user = action.payload.user
+                    state.message = action.payload.message
+                    console.log('user:', action.payload.user)
+                }else{
+                    state.message = action.payload
+                }
+            })
+            .addCase(localLogin.rejected, (state, {payload}) => {
                 state.userLoading = false
-                state.user = action.payload.user
-                state.message = action.payload.message
-            }else{
-                state.message = action.payload
-            }
-        },
-        [localLogin.rejected]: (state, {payload}) => {
-            state.userLoading = false
-            state.message = 'Login failed'
-        },
-        [localSignup.pending]: (state) =>{
-            state.userLoading = true
-        },
-        [localSignup.fulfilled]: (state, action) =>{
-            state.userLoading = false
-            if(action.payload.user){
+                state.message = 'Login failed'
+            })
+            .addCase(localSignup.pending, (state) =>{
+                state.userLoading = true
+            })
+            .addCase(localSignup.fulfilled, (state, action) =>{
                 state.userLoading = false
-                state.user = action.payload.user
-                state.message = action.payload.message
-            }else{
-                state.message = action.payload
-            }
-        },
-        [localSignup.rejected]: (state) =>{
-            state.userLoading = false
-            state.message = 'Login failed'
+                if(action.payload.user){
+                    state.userLoading = false
+                    state.user = action.payload.user
+                    state.message = action.payload.message
+                }else{
+                    state.message = action.payload
+                }
+            })
+            .addCase(localSignup.rejected, (state) =>{
+                state.userLoading = false
+                state.message = 'Login failed'
+            })
         }
     }
-})
+)
 
 export const {setUser, clearUser, clearMessage} = authSlice.actions
 export default authSlice.reducer
