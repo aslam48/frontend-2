@@ -16,6 +16,12 @@ const NavBar = () => {
         >
             Login
         </Link>
+        <Link 
+            to='/signup' 
+            className='transition-slow no-underline py-1 md:py-2 px-7 bg-primary text-white rounded-full hover:bg-black hover:text-primary'
+        >
+            Signup
+        </Link>
     </nav>
   )
 }

@@ -2,27 +2,37 @@ import React, {useEffect} from 'react'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearMessage, localLogin } from '../../features/auth/authSlice'
+import { clearMessage, localSignup } from '../../features/auth/authSlice'
 import FormError from '../FormError/FormError'
-import './LoginForm.css'
+import './SignupForm.css'
 import FormInputError from '../FormInputError/FormInputError'
-import { FaFacebook, FaGoogle, FaUser } from 'react-icons/fa'
+import { FaFacebook, FaGoogle } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 import googleIcon from '../../images/google-icon.png'
 import facebookIcon from '../../images/facebook-icon.png'
 
 
-const LoginForm = () => {
+const SignupForm = () => {
     const dispatch = useDispatch()
     const {userLoading, message, user} = useSelector( store => store.auth) 
     const formik = useFormik({
         initialValues: {
             email: '',
-            password: ''
+            password: '',
+            passwordRepeat: '',
+            firstName: '', 
+            otherName: ''
         },
         validationSchema: Yup.object({
             email: Yup.string().email('Invalid email address').required('Email is required'),
+            firstName: Yup.string().min(2, "Must be atlest 2 characters").required('First name is required'),
+            otherName: Yup.string().min(2, "Must be atlest 2 characters").required('Other name is required'),
             password: Yup.string().min(8, "Must be at least 8 characters").required("Password required")
+            .matches(/[a-z]+/, "Must contain atleast one lowercase character")
+            // .matches(/[A-Z]+/, "One uppercase character")
+            // .matches(/[@$!%*#?&]+/, "One special character")
+            .matches(/\d+/, "Must contain atleast one number"),
+            passwordRepeat: Yup.string().min(8, "Must be at least 8 characters").required("Password required")
             .matches(/[a-z]+/, "Must contain atleast one lowercase character")
             // .matches(/[A-Z]+/, "One uppercase character")
             // .matches(/[@$!%*#?&]+/, "One special character")
@@ -30,7 +40,7 @@ const LoginForm = () => {
         }),
         onSubmit: async(values) => {
             dispatch(clearMessage())
-            dispatch(localLogin(values))
+            dispatch(localSignup(values))
         }
     })
 
@@ -41,19 +51,20 @@ const LoginForm = () => {
     const facebookLogin = async() => {
         window.open('http://localhost:8000/api/auth/facebook', '_self')
     }
-    const googleLogin = async() => {
+
+    const googleLogin = async() =>{
         console.log('logging with google')
         window.open('http://localhost:8000/api/auth/google', '_self')
     }
     const {pathname} = useLocation()
-    return (
-        <div className='login'>
-            <div className='my-10 flex items-center justify-evenly uppercase'>
-                <Link to='/signup'  className={`text-center text-xl w-full bg-slate-100 p-2 border-b-2 underline `}>Sign up</Link>
-                <h2 className={`text-center text-xl w-full p-2 ${pathname==='/login'? ' border-b-2 border-primary uppercase': ''}`}>Login</h2>
-            </div>
-            <h2 className='font-semibold'>Log into your account</h2>
 
+    return (
+        <div className='signup'>
+            <div className='my-10 flex items-center justify-evenly'>
+                <h2 className={`text-center text-xl w-full p-2 ${pathname==='/signup'? ' border-b-2 border-primary uppercase': ''}`}>Sign up</h2>
+                <Link to='/login'  className={`text-center text-xl w-full bg-slate-100 p-2 border-b-2 underline uppercase`}>Login</Link>
+            </div>
+            <h2 className='font-semibold'>Create an account</h2>
             <form onSubmit={formik.handleSubmit}>
                 <FormError message={message}/>
                 <div className='form-group'>
@@ -68,6 +79,33 @@ const LoginForm = () => {
                         errorMessage={formik.errors.email}
                     />
                 </div>
+
+                <div className='form-group'>
+                    <label htmlFor='firstname'>First name</label>
+                    <input 
+                        type='text' 
+                        id='firstname'
+                        {...formik.getFieldProps('firstName')}
+                    />
+                    <FormInputError 
+                        isTouched={formik.touched.firstName}
+                        errorMessage={formik.errors.firstName}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label htmlFor='othername'>Other name</label>
+                    <input 
+                        type='text' 
+                        id='othername'
+                        {...formik.getFieldProps('otherName')}
+                    />
+                    <FormInputError 
+                        isTouched={formik.touched.otherName}
+                        errorMessage={formik.errors.otherName}
+                    />
+                </div>
+            
                 <div className='form-group'>
                     <label htmlFor='password'>Password</label>
                     <input 
@@ -80,28 +118,32 @@ const LoginForm = () => {
                         errorMessage={formik.errors.password}
                     />
                 </div>
-
-                <div className='flex justify-between text-sm text-slate-700'>
-                    <div className='flex gap-1 items-center'>
-                        <input type='checkbox' id='remember-me'/>
-                        <label htmlFor='remember-me'>Remember me</label>
-                    </div>
-                    <Link to='/forgot-password' className='underline'>Forgot password?</Link>
+                <div className='form-group'>
+                    <label htmlFor='passwordRepeat'>Password repeat</label>
+                    <input 
+                        type='password'
+                        id='passwordRepeat'
+                        {...formik.getFieldProps('passwordRepeat')}
+                    />
+                    <FormInputError 
+                        isTouched={formik.touched.passwordRepeat}
+                        errorMessage={formik.errors.passwordRepeat}
+                    />
                 </div>
-
-                <div className='flex justify-between items-center mt-5'>
+                
+                <div className='flex justify-between items-center m2-5'>
                     <button 
                         className='p-2 bg-primary rounded-full font-bold text-white text-center my-4 px-4 '
                         type='submit'
                         >Submit
                     </button> 
                     <div className='flex gap-2 items-center'>
-                        <p>Login using</p>
+                        <p>Sign up using</p>
                         <Link onClick={facebookLogin}>
                             <img src={facebookIcon} alt='google-icon' className='social-link' />
                         </Link>
                         <Link onClick={googleLogin}>
-                            <img src={googleIcon} alt='google-icon' className='social-link' />
+                            <img src={googleIcon} alt='google-icon' className='social-link hover:scale-110' />
                         </Link>
                     </div>
                 </div>
@@ -110,4 +152,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default SignupForm

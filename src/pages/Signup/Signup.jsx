@@ -1,12 +1,12 @@
 import React from 'react'
-import LoginForm from '../../components/LoginForm/LoginForm';
+import { Link } from 'react-router-dom';
+import SignupForm from '../../components/SignupForm/SignupForm';
 import loginImage from '../../images/login-bg.jpg';
 import logo from '../../images/logo.png'
-import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Signup = () => {
   return (
-    <div className='grid grid-col-1 lg:grid-cols-2 h-screen w-screen overflow-clip'>
+    <div className='grid grid-col-1 lg:grid-cols-2 h-screen w-screen overflow-clip '>
         <article className='relative items-center text-center invisible lg:visible'>
             <img 
                 src={loginImage} alt='image'
@@ -28,10 +28,10 @@ const Login = () => {
                 <img src={logo} alt='logo'/>
                 <h2>Runor</h2>
             </Link>
-            <LoginForm />
+            <SignupForm />
         </article>
     </div>
   )
 }
 
-export default Login
+export default Signup
