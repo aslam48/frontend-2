@@ -7,7 +7,6 @@ import Hero2 from '../../components/Hero2/Hero2'
 import HireWorker from '../../components/HireWorker/HireWorker'
 import PostJob from '../../components/PostJob/PostJob'
 import Sidebar from '../../components/Sidebar/Sidebar'
-import StatusList from '../../components/StatusList/StatusList'
 import WorkerCategories from '../../components/WorkerCategories/WorkerCategories'
 
 const Home = () => {

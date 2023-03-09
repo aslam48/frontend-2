@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import sectionImage from '../../images/provider1.jpg'
 import CardButton from '../CardButton/CardButton'
 

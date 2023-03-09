@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Brand from '../Brand/Brand'
 import { Link } from 'react-router-dom'
 import { FaEnvelope, FaFacebook } from 'react-icons/fa'
