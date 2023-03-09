@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { FaUser, FaHome, FaBell, FaEnvelope,  } from 'react-icons/fa'
 import {MdHomeRepairService} from 'react-icons/md'
 import NavItem from '../NavItem/NavItem'

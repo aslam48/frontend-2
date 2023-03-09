@@ -26,7 +26,7 @@ const services = [
 ]
 
 const FeaturedServices = () => {
-    const [fetchedServices, setFetchedServices] = useState([])
+    const [fetchedServices,] = useState([])
   return (
     <section 
         className='bg-red-50 main-x-p main-y-p group'
