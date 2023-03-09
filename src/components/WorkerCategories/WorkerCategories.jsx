@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-import sectionImage from '../../images/electrician.jpg'
+import React from 'react'
 import CardButton from '../CardButton/CardButton'
 
 const categories = [

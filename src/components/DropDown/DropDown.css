@@ -1,0 +1,15 @@
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+
+@layer components {
+    .drop-down{
+        @apply w-screen lg:w-auto h-auto absolute left-0 lg:right-0 top-16 flex flex-col bg-slate-100 list-none;
+    }
+
+    .drop-down .item{
+        @apply border-b-2 p-4 hover:bg-slate-300 px-8 capitalize
+    }
+}
+

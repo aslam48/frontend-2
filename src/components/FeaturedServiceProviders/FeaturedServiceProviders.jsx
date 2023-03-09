@@ -3,9 +3,7 @@ import providerImage1 from '../../images/provider1.jpg'
 import providerImage2 from '../../images/provider2.jpg'
 import providerImage3 from '../../images/provider3.jpg'
 import providerImage4 from '../../images/provider4.jpg'
-import FeaturedService from '../FeaturedService/FeaturedService'
 import FeaturedServiceProvider from '../FeaturedServiceProvider/FeaturedServiceProvider'
-
 
 const services = [
     {
@@ -39,7 +37,7 @@ const services = [
 ]
 
 const FeaturedServiceProviders = () => {
-    const [fetchedServiceProviders, setFetchedServiceProviders] = useState([])
+    const [fetchedServiceProviders, ] = useState([])
     return (
         <section 
             className='bg-slate-100 main-x-p main-y-p group'
