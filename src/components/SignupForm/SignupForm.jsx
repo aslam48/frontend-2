@@ -44,12 +44,12 @@ const SignupForm = () => {
     }, [dispatch])
     
     const facebookLogin = async() => {
-        window.open('http://localhost:8000/api/auth/facebook', '_self')
+        window.open('https://runor-backend.onrender.com/api/auth/facebook', '_self')
     }
 
     const googleLogin = async() =>{
         console.log('logging with google')
-        window.open('http://localhost:8000/api/auth/google', '_self')
+        window.open('https://runor-backend.onrender.com/api/auth/google', '_self')
     }
     const {pathname} = useLocation()
 
