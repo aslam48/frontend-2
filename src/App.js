@@ -1,23 +1,21 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Home from './pages/Home/Home';
 import Error from './components/Error/Error';
 import Login from './pages/Login/Login';
-import { useLocation } from 'react-router-dom';
 import Signup from './pages/Signup/Signup';
 import { setUser, clearUser } from './features/auth/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
-  const {pathname} = useLocation()
-  const [isLoading, setIsLoading] = useState()
+  
   const { user } = useSelector(store => store.auth)
   const dispatch = useDispatch()
 
   useEffect(() => {
       const getUser = async() =>{
-          fetch('http://localhost:8000/api/auth/login/success', {
+          fetch('https://runor-backend.onrender.com/api/auth/login/success', {
             credentials: 'include',
             method: 'GET',
             headers: {
@@ -40,7 +38,7 @@ function App() {
         })
     }
     getUser()
-  }, [])
+  }, [dispatch])
   
   return (
     <div>

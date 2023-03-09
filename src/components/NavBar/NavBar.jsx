@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaChevronCircleDown, FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import userIcon from '../../images/user.png'
@@ -23,7 +23,7 @@ const NavBar = () => {
             user? (
                 <div className='flex gap-2 items-center relative'>
                     <img src={userIcon} alt='user-icon'  className='rounded-full w-[60px] h-[50px] shadow-md'/>
-                    <p className='text-primary'>{user.username}</p>
+                    <p className='text-primary'>{user.firstName} {user.otherName}</p>
                     {
                         isOpen? <FaChevronUp  className='' onClick={()=> setIsOpen(!isOpen)}/>:
                         <FaChevronDown  className='' onClick={()=> setIsOpen(!isOpen)}/>

@@ -7,7 +7,7 @@ export const localLogin = createAsyncThunk(
     async(values, thunkAPI) =>{
         console.log('logging in ...: ', values)
         try {
-            const res = await axios.post('http://localhost:8000/auth/login', {
+            const res = await axios.post('https://runor-backend.onrender.com/api/auth/login', {
                 email: values.email,
                 password: values.password
             })
@@ -24,10 +24,11 @@ export const localSignup = createAsyncThunk(
     'auth/localSignup',
     async(values, thunkAPI) => {
         try {
-            const res = await axios.post('http://localhost:8000/auth/signup', {
+            const res = await axios.post('https://runor-backend.onrender.com/api/auth/signup', {
                 email: values.email,
                 password: values.password,
-                username: values.username
+                otherName: values.otherName,
+                firstName: values.firstName
             })
             return res.data
         } catch (error) {

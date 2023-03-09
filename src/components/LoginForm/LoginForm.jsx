@@ -6,7 +6,6 @@ import { clearMessage, localLogin } from '../../features/auth/authSlice'
 import FormError from '../FormError/FormError'
 import './LoginForm.css'
 import FormInputError from '../FormInputError/FormInputError'
-import { FaFacebook, FaGoogle, FaUser } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 import googleIcon from '../../images/google-icon.png'
 import facebookIcon from '../../images/facebook-icon.png'
@@ -14,7 +13,7 @@ import facebookIcon from '../../images/facebook-icon.png'
 
 const LoginForm = () => {
     const dispatch = useDispatch()
-    const {userLoading, message, user} = useSelector( store => store.auth) 
+    const { message } = useSelector( store => store.auth) 
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -36,7 +35,7 @@ const LoginForm = () => {
 
     useEffect(() => {
         dispatch(clearMessage())
-    }, [])
+    }, [dispatch])
     
     const facebookLogin = async() => {
         window.open('http://localhost:8000/api/auth/facebook', '_self')

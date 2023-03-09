@@ -9,7 +9,7 @@ const Signup = () => {
     <div className='grid grid-col-1 lg:grid-cols-2 h-screen w-screen overflow-clip '>
         <article className='relative items-center text-center invisible lg:visible'>
             <img 
-                src={loginImage} alt='image'
+                src={loginImage} alt='bg-poster'
                 className='w-full h-full object-cover aspect-square animate-pulse absolute top-0 left-0'
             />
             <div 

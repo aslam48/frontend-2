@@ -6,7 +6,6 @@ import { clearMessage, localSignup } from '../../features/auth/authSlice'
 import FormError from '../FormError/FormError'
 import './SignupForm.css'
 import FormInputError from '../FormInputError/FormInputError'
-import { FaFacebook, FaGoogle } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 import googleIcon from '../../images/google-icon.png'
 import facebookIcon from '../../images/facebook-icon.png'
@@ -14,7 +13,7 @@ import facebookIcon from '../../images/facebook-icon.png'
 
 const SignupForm = () => {
     const dispatch = useDispatch()
-    const {userLoading, message, user} = useSelector( store => store.auth) 
+    const { message} = useSelector( store => store.auth) 
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -32,11 +31,7 @@ const SignupForm = () => {
             // .matches(/[A-Z]+/, "One uppercase character")
             // .matches(/[@$!%*#?&]+/, "One special character")
             .matches(/\d+/, "Must contain atleast one number"),
-            passwordRepeat: Yup.string().min(8, "Must be at least 8 characters").required("Password required")
-            .matches(/[a-z]+/, "Must contain atleast one lowercase character")
-            // .matches(/[A-Z]+/, "One uppercase character")
-            // .matches(/[@$!%*#?&]+/, "One special character")
-            .matches(/\d+/, "Must contain atleast one number")
+            passwordRepeat: Yup.string().required('Confirm password required').oneOf([Yup.ref('password'), null], 'Passwords must match')
         }),
         onSubmit: async(values) => {
             dispatch(clearMessage())
@@ -46,7 +41,7 @@ const SignupForm = () => {
 
     useEffect(() => {
         dispatch(clearMessage())
-    }, [])
+    }, [dispatch])
     
     const facebookLogin = async() => {
         window.open('http://localhost:8000/api/auth/facebook', '_self')
@@ -79,57 +74,61 @@ const SignupForm = () => {
                         errorMessage={formik.errors.email}
                     />
                 </div>
+                <div className='flex justify-between gap-2'>
+                    <div className='form-group'>
+                        <label htmlFor='firstname'>First name</label>
+                        <input 
+                            type='text' 
+                            id='firstname'
+                            {...formik.getFieldProps('firstName')}
+                        />
+                        <FormInputError 
+                            isTouched={formik.touched.firstName}
+                            errorMessage={formik.errors.firstName}
+                        />
+                    </div>
 
-                <div className='form-group'>
-                    <label htmlFor='firstname'>First name</label>
-                    <input 
-                        type='text' 
-                        id='firstname'
-                        {...formik.getFieldProps('firstName')}
-                    />
-                    <FormInputError 
-                        isTouched={formik.touched.firstName}
-                        errorMessage={formik.errors.firstName}
-                    />
+                    <div className='form-group'>
+                        <label htmlFor='othername'>Other name</label>
+                        <input 
+                            type='text' 
+                            id='othername'
+                            {...formik.getFieldProps('otherName')}
+                        />
+                        <FormInputError 
+                            isTouched={formik.touched.otherName}
+                            errorMessage={formik.errors.otherName}
+                        />
+                    </div>
                 </div>
 
-                <div className='form-group'>
-                    <label htmlFor='othername'>Other name</label>
-                    <input 
-                        type='text' 
-                        id='othername'
-                        {...formik.getFieldProps('otherName')}
-                    />
-                    <FormInputError 
-                        isTouched={formik.touched.otherName}
-                        errorMessage={formik.errors.otherName}
-                    />
+                <div className='flex gap-2'>
+                    <div className='form-group'>
+                        <label htmlFor='password'>Password</label>
+                        <input 
+                            type={'password'}
+                            id='password'
+                            {...formik.getFieldProps('password')}
+                        />
+                        <FormInputError 
+                            isTouched={formik.touched.password}
+                            errorMessage={formik.errors.password}
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='passwordRepeat'>Confirm password</label>
+                        <input 
+                            type={'password'}
+                            id='passwordRepeat'
+                            {...formik.getFieldProps('passwordRepeat')}
+                        />
+                        <FormInputError 
+                            isTouched={formik.touched.passwordRepeat}
+                            errorMessage={formik.errors.passwordRepeat}
+                        />
+                    </div>
                 </div>
             
-                <div className='form-group'>
-                    <label htmlFor='password'>Password</label>
-                    <input 
-                        type='password'
-                        id='password'
-                        {...formik.getFieldProps('password')}
-                    />
-                    <FormInputError 
-                        isTouched={formik.touched.password}
-                        errorMessage={formik.errors.password}
-                    />
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='passwordRepeat'>Password repeat</label>
-                    <input 
-                        type='password'
-                        id='passwordRepeat'
-                        {...formik.getFieldProps('passwordRepeat')}
-                    />
-                    <FormInputError 
-                        isTouched={formik.touched.passwordRepeat}
-                        errorMessage={formik.errors.passwordRepeat}
-                    />
-                </div>
                 
                 <div className='flex justify-between items-center m2-5'>
                     <button 

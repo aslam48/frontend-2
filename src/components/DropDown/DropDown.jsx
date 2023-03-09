@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './DropDown.css'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { clearUser } from '../../features/auth/authSlice'
 
 const DropDown = ({items}) => {
 
-    const {user} = useSelector(store => store.auth)
     const dispatch = useDispatch()
     const logout = () =>{
-      window.open('http://localhost:8000/api/auth/logout', '_self')
+      window.open('https://runor-backend.onrender.com/api/auth/logout', '_self')
       document.cookie = null
       dispatch(clearUser())
     }
