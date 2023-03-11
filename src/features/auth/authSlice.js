@@ -91,7 +91,7 @@ const authSlice = createSlice({
             })
             .addCase(localSignup.rejected, (state) =>{
                 state.userLoading = false
-                state.message = 'Login failed'
+                state.message = 'Sign up failed'
             })
         }
     }

@@ -7,6 +7,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import { setUser, clearUser } from './features/auth/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   
@@ -46,6 +47,7 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path='/login' element={ user? <Navigate to='/' />: <Login /> }/>
           <Route path='/signup' element={ user? <Navigate to='/' />: <Signup /> }/>
+          <Route path='/profile' element={!user? <Navigate to='/'/>: <Profile />} />
           <Route path='*' element={<Error/>} />
         </Routes>
     </div>
