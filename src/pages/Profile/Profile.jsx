@@ -87,7 +87,7 @@ const Profile = () => {
                                 <div className='text-center flex flex-col gap-2 mt-2'>
                                     <p>Please create service profile to identify yourself as service provider or comsumer</p>
                                     <Link 
-                                        className='my-2 p-2 px-4 text-white bg-primary rounded-full w-fit m-auto'
+                                        className='my-2 p-2 px-4 text-white bg-primary rounded-full w-fit m-auto hover:bg-black hover:text-primary'
                                         to='/service-profile'
                                     >
                                         Set service profile
