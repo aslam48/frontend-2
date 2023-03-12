@@ -7,7 +7,6 @@ export const getAllProfiles = createAsyncThunk(
     'profile/getAllProfiles',
     async(arg, thunkAPI) =>{
         try {
-            console.log('token: ', localStorage.getItem('token'))
             const res = await axios.get(`${baseUrl}/api/profile`, {
                 "Content-type": "application/json",
                 headers: {
@@ -27,7 +26,7 @@ export const updateProfile = createAsyncThunk(
         try {
             const res = await axios.patch(`${baseUrl}/api/profile/personal`, values, {
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-type': 'application/json',
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }
             })
@@ -43,10 +42,19 @@ export const updateProfile = createAsyncThunk(
     }
 )
 
+const date = new Date()
+let month = date.getMonth() + 1
+month = date.getMonth() < 10 ? '0' + month.toString() : month
+const defaultDateOfBirth = `${date.getFullYear()}-${month}-${date.getDate()}`
 const profileSlice = createSlice({
     name: 'profile',
     initialState: {
-        personalProfile: null,
+        personalProfile: {
+            bio: 'my beatiful bio',
+            birthday: defaultDateOfBirth,
+            city: 'my city',
+            country: 'my country'
+        },
         serviceProfile: null,
         isLoading: true,
         errorMessage: ''
