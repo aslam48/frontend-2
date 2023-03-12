@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom'
 import './DropDown.css'
 import { useDispatch } from 'react-redux'
 import { clearUser } from '../../features/auth/authSlice'
+import { baseUrl } from '../../utils/base_url'
 
 const DropDown = ({items}) => {
 
     const dispatch = useDispatch()
     const logout = async() =>{
-        // window.open('https://runor-backend.onrender.com/api/auth/logout', '_self')
-        window.open('http://localhost:8000/api/auth/logout', '_self')
+        window.open(`${baseUrl}/api/auth/logout`, '_self')
+        // window.open('http://localhost:8000/api/auth/logout', '_self')
         document.cookie = null
         try {
             localStorage.removeItem('token')

@@ -12,7 +12,6 @@ export const localLogin = createAsyncThunk(
                 email: values.email,
                 password: values.password
             })
-            // console.log('from api:', res.data)
             return res.data
         } catch (error) {
             thunkAPI.rejectWithValue('Something went wrong')

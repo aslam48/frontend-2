@@ -33,24 +33,23 @@ const PersonalProfile = ({personalProfile, user, setOpen}) => {
                 <hr />
                 <p>{user.location}</p>
             </article>
-            {
-                personalProfile? (
-                    <>
-                        <article>
-                            <small className='text-primary'>City</small>
-                            <hr />
-                            <p>{personalProfile.city}</p>
-                        </article>
-                        <article>
-                            <small className='text-primary'>Country</small>
-                            <hr />
-                            <p>{personalProfile.country}</p>
-                        </article>
-                    </>
-                ): (
-                    <small className='text-center text-red-700 mx-auto'>Something went wrong</small>
-                )
-            }
+            <>
+                <article>
+                    <small className='text-primary'>City</small>
+                    <hr />
+                    <p>{personalProfile.city}</p>
+                </article>
+                <article>
+                    <small className='text-primary'>Country</small>
+                    <hr />
+                    <p>{personalProfile.country}</p>
+                </article>
+                <article>
+                    <small className='text-primary'>Birthday</small>
+                    <hr />
+                    <p>{personalProfile.birthday}</p>
+                </article>
+            </>
         </section>
     )
 }

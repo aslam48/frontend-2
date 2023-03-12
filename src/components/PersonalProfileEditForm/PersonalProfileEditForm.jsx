@@ -12,16 +12,16 @@ const PersonalProfileEditForm = ({setOpen}) => {
     const {personalProfile} = useSelector( store=> store.profile)
     const {user} = useSelector( store => store.auth)
     const dispatch = useDispatch()
-
+    
     const formik = useFormik({
         initialValues:{
             firstName: user.firstName,
             otherName: user.otherName,
             address: user.location,
-            city: personalProfile?.city,
+            city: personalProfile.city,
             country: personalProfile.country,
             bio: personalProfile.bio,
-            dateOfBirth: personalProfile.birthday.slice(0, 10)
+            dateOfBirth: personalProfile.birthday
         },
         validationSchema: Yup.object({
             firstName: Yup.string().min(2, 'First name must be 2 or more characters').required('First name is required'),
