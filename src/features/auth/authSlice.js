@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { baseUrl } from "../../utils/base_url";
 
 
 export const localLogin = createAsyncThunk(
@@ -7,7 +8,7 @@ export const localLogin = createAsyncThunk(
     async(values, thunkAPI) =>{
         console.log('logging in ...: ', values)
         try {
-            const res = await axios.post('https://runor-backend.onrender.com/api/auth/login', {
+            const res = await axios.post( `${baseUrl}/api/auth/login`, {
                 email: values.email,
                 password: values.password
             })
@@ -24,7 +25,7 @@ export const localSignup = createAsyncThunk(
     'auth/localSignup',
     async(values, thunkAPI) => {
         try {
-            const res = await axios.post('https://runor-backend.onrender.com/api/auth/signup', {
+            const res = await axios.post(`${baseUrl}/api/auth/signup`, {
                 email: values.email,
                 password: values.password,
                 otherName: values.otherName,
@@ -40,7 +41,7 @@ export const localSignup = createAsyncThunk(
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        user: null, 
+        user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null, 
         userLoading: true, 
         message: ''
     },
@@ -67,7 +68,8 @@ const authSlice = createSlice({
                     state.userLoading = false
                     state.user = action.payload.user
                     state.message = action.payload.message
-                    console.log('user:', action.payload.user)
+                    localStorage.setItem('user', JSON.stringify(action.payload.user))
+                    localStorage.setItem('token', JSON.stringify(action.payload.token))
                 }else{
                     state.message = action.payload
                 }
@@ -75,6 +77,7 @@ const authSlice = createSlice({
             .addCase(localLogin.rejected, (state, {payload}) => {
                 state.userLoading = false
                 state.message = 'Login failed'
+                localStorage.removeItem('token')
             })
             .addCase(localSignup.pending, (state) =>{
                 state.userLoading = true
