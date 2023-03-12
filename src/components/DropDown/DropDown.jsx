@@ -7,10 +7,17 @@ import { clearUser } from '../../features/auth/authSlice'
 const DropDown = ({items}) => {
 
     const dispatch = useDispatch()
-    const logout = () =>{
-      window.open('https://runor-backend.onrender.com/api/auth/logout', '_self')
-      document.cookie = null
-      dispatch(clearUser())
+    const logout = async() =>{
+        // window.open('https://runor-backend.onrender.com/api/auth/logout', '_self')
+        window.open('http://localhost:8000/api/auth/logout', '_self')
+        document.cookie = null
+        try {
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
+            const res = await dispatch(clearUser())
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (

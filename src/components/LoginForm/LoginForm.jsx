@@ -29,7 +29,13 @@ const LoginForm = () => {
         }),
         onSubmit: async(values) => {
             dispatch(clearMessage())
-            dispatch(localLogin(values))
+            try {
+                const res = await dispatch(localLogin(values)).unwrap()
+                console.log('login res: ', res)
+                localStorage.setItem('token', res.token)
+            } catch (error) {
+                console.log('login error: ', error)
+            }
         }
     })
 
