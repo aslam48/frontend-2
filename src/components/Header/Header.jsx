@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchForm from '../SearchForm/SearchForm'
 import NavBar from '../NavBar/NavBar'
 import Brand from '../Brand/Brand'
@@ -8,9 +8,17 @@ import { useDispatch } from 'react-redux'
 
 const Header = () => {
     const dispatch = useDispatch()
+    const [scroll, setScroll] = useState(0)
+
+    useEffect(() => {
+        window.addEventListener('scroll', (e)=>{
+            setScroll(window.scrollY)
+        })
+    }, [scroll])
+    
     return (
         <header 
-            className='flex justify-between items-center main-x-p py-2 lg:py-5 w-screen fixed top-0 left-0 bg-white z-30 shadow-sm shadow-slate-300'
+            className={`flex justify-between items-center main-x-p py-2 lg:py-5 w-screen fixed bg-opacity-90 top-0 left-0 bg-white z-30 ${scroll > 20 ?'shadow-sm shadow-slate-300': ''}`}
         >
         <div 
                 className='flex gap-4 items-center'
