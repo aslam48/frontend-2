@@ -10,18 +10,22 @@ const services = [
     {
         name: 'Cleaning',
         image: cleaningImage,
+        providerPopulation: 200,
     }, 
     {
         name: 'Mechanic',
         image: mechanicImage,
+        providerPopulation: 100,
     }, 
     {
         name: 'Catering',
         image: cookImage,
+        providerPopulation: 56,
     }, 
     {
         name: 'Electrical',
         image: electricianImage,
+        providerPopulation: 60,
     }, 
 ]
 

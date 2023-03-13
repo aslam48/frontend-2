@@ -10,6 +10,9 @@ module.exports = {
       },
       fontSize: {
         title1: '3rem'
+      },
+      fontFamily:{
+        cursive: 'cursive'
       }
     },
   },
