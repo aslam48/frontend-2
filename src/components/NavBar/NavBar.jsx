@@ -10,7 +10,6 @@ import { useState } from 'react'
 const NavBar = () => {
     const {user} = useSelector(store => store.auth)
     const [isOpen, setIsOpen] = useState(false)
-    console.log(user)
   return (
     <nav className='flex gap-4 px-4'>
         <Link 

@@ -31,7 +31,6 @@ const LoginForm = () => {
             dispatch(clearMessage())
             try {
                 const res = await dispatch(localLogin(values)).unwrap()
-                console.log('login res: ', res)
                 localStorage.setItem('token', res.token)
             } catch (error) {
                 console.log('login error: ', error)
@@ -47,7 +46,6 @@ const LoginForm = () => {
         window.open('https://runor-backend.onrender.com/api/auth/facebook', '_self')
     }
     const googleLogin = async() => {
-        console.log('logging with google')
         window.open('https://runor-backend.onrender.com/api/auth/google', '_self')
     }
     const {pathname} = useLocation()

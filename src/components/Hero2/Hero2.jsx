@@ -3,36 +3,44 @@ import { useRef, useEffect } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import center from '../../images/hero-large-center.png'
+import heroImage from '../../images/hero-photo.jpg'
+import heroImage2 from '../../images/hero-photo2.jpg'
 
 
 const Hero = () => {
     const imagesWrapper = useRef(null)
     const [represh, setRepresh] = useState(false)
-
+    const [zIndex, setZindex] = useState([10, 20])
     useEffect(() => {
-        const timeOut = setTimeout(()=>{
-            imagesWrapper.current.childNodes.forEach(element => {
-                let index = Math.floor((Math.random()*5)+1)
-                element.style.zIndex = index
-                console.log(index)
-            });
-            setRepresh(!represh)
+        // const timeOut = setTimeout(()=>{
+        //     imagesWrapper.current.childNodes.forEach(element => {
+        //         let index = Math.floor((Math.random()*5)+1)
+        //         element.style.zIndex = index
+        //     });
+        //     setRepresh(!represh)
+        // }, 5000)
+        const timeInterval = setInterval(()=>{
+            if(zIndex[0] === 10){
+                setZindex([20, 10])
+            }else{
+                setZindex([10, 20])
+            }
         }, 5000)
         return () => {
-            clearTimeout(timeOut)
+            clearTimeout(timeInterval)
         }
-    }, [represh])
+    }, [zIndex])
     
 
     return (
         <section 
-            className='flex flex-col lg:flex-row justify-between items-center main-x-p py-10 relative h-auto gap-5 pb-20'
+            className='grid grid-cols-1 lg:grid-cols-2 main-x-p pt-10 h-[600px] gap-10 relative content-start lg:content-center'
         >
             <div 
-                className='flex flex-col justify-center item-center lg:items-start text-center lg:text-left'
+                className='flex flex-col lg:pt-5 justify-center lg:justify-start item-center lg:items-start text-center lg:text-left'
             >
                 <h1 
-                    className='text-primary text-4xl lg:text-7xl font-extrabold'
+                    className='text-primary text-4xl lg:text-7xl font-extrabold animate-bounce'
                 >
                     Hire the world
                 </h1>
@@ -49,19 +57,25 @@ const Hero = () => {
                 </p>
                 <Link 
                     to='/login' 
-                    className='shadow-md shadow-slate-400 transition-slow no-underline py-1 md:py-2 px-7 text-center mx-auto lg:mx-0 w-1/2 bg-primary font-bold text-white rounded-full hover:bg-black hover:text-primary'
+                    className='shadow-md shadow-slate-400 hover:scale-105 transition-slow no-underline py-1 md:py-2 px-7 text-center mx-auto lg:mx-0 w-1/2 bg-primary font-bold text-white rounded-full hover:bg-black hover:text-primary'
                 >
                     Get Started
                 </Link>
             </div>
             <div 
-                className='lg:w-[50%] w-full'
+                className='w-full h-full relative'
             >
                 <img 
-                    src={center} 
+                    src={heroImage} 
                     alt="hero-show" 
-                    className='h-[300px] w-[100%] rounded-full'
+                    className={`h-[250px] lg:h-full w-full mx-auto object-cover aspect-auto rounded-full scale-110 animate-pulse absolute transition-all duration-200 z-${zIndex[0]}`}
                 />
+                <img 
+                    src={heroImage2} 
+                    alt="hero-show" 
+                    className={`h-[250px] lg:h-full w-full mx-auto object-cover aspect-auto rounded-full scale-110 lanimate-pulse transition-all duration-200 absolute z-${zIndex[1]}`}
+                />
+                
             </div>
         </section>
     )
