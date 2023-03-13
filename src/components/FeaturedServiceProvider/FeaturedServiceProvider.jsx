@@ -5,23 +5,24 @@ import Stars from '../Stars/Stars'
 const FeaturedServiceProvider = ({id, name, image, rating, service}) => {
   return (
     <article 
-        className='rounded-t-lg bg-slate-200 transition-slow hover:scale-105 shadow-sm'>
+        className='rounded-t-lg bg-slate-200 transition-slow hover:scale-105 shadow-sm relative'>
         <img 
             src={image}
             alt={name}
             className='w-full h-[300px] rounded-t-lg'
         />
-       <div className='p-2 text-center flex flex-col gap-1'>
+       <div className='p-2 text-center flex flex-col gap-1 absolute bg-black bg-opacity-60 bottom-0 left-0 w-full h-auto text-white'>
         <p>{name}</p>
         <h3 
-            className='text-slate-600 text-xl font-bold text-center p-2 bg-slate-300 rounded-md'
+            className='text-lg font-bold text-white text-center'
           >
               {service}
         </h3>
-        <Stars stars={rating}/>
+        <Stars stars={rating} />
         <CardButton 
           path={`/provider/${id}`}
           text='details'
+          extraStyle='bg-opacity-50'
         />
        </div>
     </article>
