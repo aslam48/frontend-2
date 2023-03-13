@@ -34,7 +34,7 @@ const Hero = () => {
 
     return (
         <section 
-            className='grid grid-cols-1 lg:grid-cols-2 main-x-p py-10 h-[600px] gap-5 pb-20 relative'
+            className='grid grid-cols-1 lg:grid-cols-2 main-x-p pt-10 h-[600px] gap-10 relative content-start lg:content-center'
         >
             <div 
                 className='flex flex-col lg:pt-5 justify-center lg:justify-start item-center lg:items-start text-center lg:text-left'
@@ -68,12 +68,12 @@ const Hero = () => {
                 <img 
                     src={heroImage} 
                     alt="hero-show" 
-                    className={`h-full w-full mx-auto object-cover aspect-auto rounded-full scale-110 lg:animate-pulse absolute transition-all duration-300 z-${zIndex[0]}`}
+                    className={`h-[250px] lg:h-full w-full mx-auto object-cover aspect-auto rounded-full scale-110 animate-pulse absolute transition-all duration-200 z-${zIndex[0]}`}
                 />
                 <img 
                     src={heroImage2} 
                     alt="hero-show" 
-                    className={`h-[200px] lg:h-full w-full mx-auto object-cover aspect-auto rounded-full scale-110 lg:animate-pulse transition-all duration-1000 absolute z-${zIndex[1]}`}
+                    className={`h-[250px] lg:h-full w-full mx-auto object-cover aspect-auto rounded-full scale-110 lanimate-pulse transition-all duration-200 absolute z-${zIndex[1]}`}
                 />
                 
             </div>
