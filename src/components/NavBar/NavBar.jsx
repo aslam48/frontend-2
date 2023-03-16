@@ -14,14 +14,14 @@ const NavBar = () => {
     <nav className='flex gap-4 px-4'>
         <Link 
             to='/services' 
-            className='transition-slow hidden lg:flex no-underline p-2 px-7 text-black rounded-full hover:bg-slate-200'
+            className='transition-slow hidden lg:flex no-underline p-2 px-7 text-inherit font-bold rounded-full hover:bg-slate-500'
         >
             Services
         </Link>
         {
             user? (
                 <div className='flex gap-2 items-center relative'>
-                    <img src={userIcon} alt='user-icon'  className='rounded-full w-[60px] h-[50px] shadow-md'/>
+                    <img src={userIcon} alt='user-icon'  className='rounded-full w-[50px] h-[40px] shadow-md'/>
                     <p className='text-primary'>{user.firstName} {user.otherName}</p>
                     {
                         isOpen? <FaChevronUp  className='' onClick={()=> setIsOpen(!isOpen)}/>:

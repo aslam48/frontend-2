@@ -7,7 +7,7 @@ const PostJob = () => {
 
     return (
         <section 
-            className='flex flex-col lg:flex-row gap-3 bg-white main-x-p main-y-p group'
+            className='flex flex-col lg:flex-row gap-3 bg-white main-x-p main-y-p group relative'
         >
             <div 
                 className='flex flex-col gap-4 justify-center items-center lg:items-start flex-1 text-center lg:text-left'
@@ -28,7 +28,7 @@ const PostJob = () => {
                 <img 
                     src={sectionImage} 
                     alt='post-job' 
-                    className='w-full h-[350px] rounded-md'
+                    className='w-full h-[350px] rounded-md object-cover'
                 />
             </div>
         </section>

@@ -2,8 +2,11 @@ import React, {useState} from 'react'
 import cleaningImage from '../../images/cleaner.jpg'
 import mechanicImage from '../../images/mechanic.jpg'
 import electricianImage from '../../images/electrician.jpg'
+import dryCleaningImage from '../../images/dry-cleaning.jpg'
 import cookImage from '../../images/cook.jpg'
 import FeaturedService from '../FeaturedService/FeaturedService'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import './FeaturedServices.css'
 
 
 const services = [
@@ -27,13 +30,18 @@ const services = [
         image: electricianImage,
         providerPopulation: 60,
     }, 
+    {
+        name: 'Dry cleaning',
+        image: dryCleaningImage,
+        providerPopulation: 110,
+    }, 
 ]
 
 const FeaturedServices = () => {
     const [fetchedServices,] = useState([])
   return (
     <section 
-        className='bg-red-50 main-x-p main-y-p group'
+        className='services bg-red-50 main-x-p main-y-p group relative'
     >
         <div className='flex flex-col items-center lg:items-start gap-2'>
             <h2 className='text-center lg:text-left text-3xl lg:text-4xl font-extrabold'>Popular services</h2>
@@ -42,17 +50,19 @@ const FeaturedServices = () => {
             />
         </div>
         <div 
-            className='grid grid-cols-1 lg:grid-cols-4 gap-4 mt-10'
+            className='grid auto-cols-[100%] md:auto-cols-[25%] lg:auto-cols-[25%] pb-1 grid-flow-col snap-x snap-mandatory overflow-x-auto overflow-y-clip  gap-2 mt-10'
         >
             {
                 fetchedServices.length < 1? 
                 (
-                services.map(service => <FeaturedService key={service} {...service}/>)
+                services.map(service => <FeaturedService key={service.name} {...service}/>)
                 ): (
-                fetchedServices.map(service => <FeaturedService key={service} {...service}/>)
+                fetchedServices.map(service => <FeaturedService key={service.name} {...service}/>)
                 )
             }
         </div>
+        <FaChevronLeft className='chevron chevron-left'/>
+        <FaChevronRight className='chevron chevron-right'/>
     </section>
   )
 }

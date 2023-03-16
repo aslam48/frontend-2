@@ -1,9 +1,12 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 import providerImage1 from '../../images/provider1.jpg'
 import providerImage2 from '../../images/provider2.jpg'
 import providerImage3 from '../../images/provider3.jpg'
 import providerImage4 from '../../images/provider4.jpg'
+import providerImage5 from '../../images/provider5.jpg'
 import FeaturedServiceProvider from '../FeaturedServiceProvider/FeaturedServiceProvider'
+import './FeaturedServiceProviders.css'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 const services = [
     {
@@ -34,13 +37,28 @@ const services = [
         rating: 4,
         service: 'Electrical'
     }, 
+    {
+        id: 5,
+        name: 'Mary John',
+        image: providerImage5,
+        rating: 5,
+        service: 'Catering'
+    }, 
 ]
 
 const FeaturedServiceProviders = () => {
     const [fetchedServiceProviders, ] = useState([])
+    const wrapperRef = useRef(null)
+ 
+    const scrollLeft = ()=>{
+        wrapperRef.current.scrollLeft += 100
+    }
+    const scrollRight = ()=>{
+        wrapperRef.current.scrollLeft -= 100
+    }
     return (
         <section 
-            className='bg-slate-100 main-x-p main-y-p group'
+            className='providers bg-slate-100 main-x-p main-y-p group relative'
         >
             <div className='flex flex-col items-center lg:items-start gap-2'>
                 <h2 className='text-center lg:text-left text-3xl lg:text-4xl font-extrabold'>Top service providers</h2>
@@ -49,27 +67,30 @@ const FeaturedServiceProviders = () => {
                 />
             </div>
             <div 
-                className='grid grid-cols-1 lg:grid-cols-4 gap-4 mt-10'
+                ref={wrapperRef}
+                className='grid overflow-x-auto overflow-y-clip scroll-smooth gap-2 w-full mt-10 pb-1 grid-flow-col auto-cols-[100%] md:auto-cols-[25%] snap-mandatory snap-x'
             >
                 {
                    fetchedServiceProviders.length < 1? 
                    (
                     services.map(service => 
                             <FeaturedServiceProvider 
-                                key={service} 
+                                key={service.name} 
                                 {...service}
                             />
                         )
                    ): (
                     fetchedServiceProviders.map(service => 
                             <FeaturedServiceProvider 
-                                key={service} 
+                                key={service.name} 
                                 {...service}
                             />
                         )
                    )
                 }
             </div>
+            <FaChevronLeft className='chevron chevron-left' onClick={scrollLeft}/>
+            <FaChevronRight className='chevron chevron-right' onClick={scrollRight}/>
         </section>
     )
 }

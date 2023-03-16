@@ -7,10 +7,10 @@ const Footer = () => {
     
     return (
         <footer 
-            className='bg-white main-x-p main-y-p group flex flex-col gap-3 text-black text-[1.0rem]'
+            className='h-auto bg-black text-white main-x-p main-y-p group flex flex-col gap-3  text-[1.0rem]'
         >
           
-          <section className='flex flex-col lg:flex-row gap-3 justify-between items-start text-left'>
+          <section className='flex flex-col text-white lg:flex-row gap-3 justify-between items-start text-left'>
             <Brand/>
             <article>
                 <ul className='list-none px-0'>
@@ -73,7 +73,7 @@ const Footer = () => {
                 </ul>
             </article>
           </section>
-          <section className='flex justify-end items-center gap-2'>
+          <section className='flex justify-start items-center gap-2'>
             <p className='font-bold'>Contact us</p>
             <FaEnvelope 
                 className='text-red-900 text-2xl'

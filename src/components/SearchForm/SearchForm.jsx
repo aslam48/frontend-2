@@ -15,7 +15,7 @@ const SearchForm = () => {
                 type="search" 
                 placeholder='keyword' 
                 id='service' 
-                className='rounded-l-full border-2 outline-none border-slate-400 p-2 px-10 border-r-0'
+                className='rounded-l-full border-2 outline-none bg-opacity-60 border-primary p-2 px-10 border-r-0 bg-black'
             />
         </div>
         <div className='relative'>
@@ -26,7 +26,7 @@ const SearchForm = () => {
                 type="search" 
                 placeholder='Location' 
                 id='location'
-                className='rounded-r-full border-2 outline-none border-slate-400 p-2 px-10 border-l-0 bg-slate-100'
+                className='rounded-r-full border-2 outline-none border-primary bg-opacity-50 p-2 px-10 border-l-0 bg-black'
             />
         </div>
         <input type="submit" className='hidden'/>
