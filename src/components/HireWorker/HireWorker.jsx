@@ -7,7 +7,7 @@ const HireWorker = () => {
 
     return (
         <section 
-            className='flex flex-col lg:flex-row-reverse gap-3 lg:gap-10 justify-between bg-red-900 main-x-p main-y-p group text-white'
+            className='flex flex-col lg:flex-row-reverse gap-3 lg:gap-10 justify-between bg-red-900 main-x-p main-y-p group text-white relative'
         >
             <div 
                 className='flex flex-col gap-4 justify-center items-center lg:items-start flex-1 text-center lg:text-left'
@@ -27,7 +27,7 @@ const HireWorker = () => {
                 <img 
                     src={sectionImage} 
                     alt='post-job' 
-                    className='w-full h-[350px] rounded-md'
+                    className='w-full h-[350px] rounded-md object-cover'
                 />
             </div>
         </section>

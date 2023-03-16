@@ -11,7 +11,7 @@ import WorkerCategories from '../../components/WorkerCategories/WorkerCategories
 
 const Home = () => {
   return (
-    <div className='w-full mt-20 lg:mt-20'>
+    <div className='w-full mt-0 lg:mt-0'>
         <Header />
         <Hero2 />
         <FeaturedServices />

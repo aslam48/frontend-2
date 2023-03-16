@@ -18,7 +18,7 @@ const Header = () => {
     
     return (
         <header 
-            className={`flex justify-between items-center main-x-p py-2 lg:py-5 w-screen fixed bg-opacity-90 top-0 left-0 bg-white z-30 ${scroll > 20 ?'shadow-sm shadow-slate-300': ''}`}
+            className={`flex justify-between items-center main-x-p py-2 lg:py-5 w-screen fixed top-0 left-0 bg-white z-50 shadow-sm shadow-primary ${scroll > 20 ?'bg-opacity-90': 'bg-opacity-20 text-white'}`}
         >
         <div 
                 className='flex gap-4 items-center'

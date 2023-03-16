@@ -4,7 +4,7 @@ import { FaUsers } from 'react-icons/fa'
 const FeaturedService = ({name, image, providerPopulation}) => {
   return (
     <article 
-        className='rounded-t-lg bg-slate-200 transition-slow hover:scale-105 shadow-sm relative'>
+        className='basis-[50%] md:basis-[30%] lg:basis-[25%] snap-start rounded-t-lg bg-slate-200 transition-slow hover:scale-105 shadow-sm relative'>
         <img 
             src={image}
             alt={name}
