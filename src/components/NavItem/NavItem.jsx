@@ -11,14 +11,14 @@ const NavItem = ({text, path, icon}) => {
 
     return (
         <li 
-            className={`rounded-full p-2 hover:bg-slate-300 ${isMatch? 'bg-slate-300': ''} w-full transition-slow`}
+            className={`rounded-full p-2 hover:bg-slate-300 hover:p-4 hover:scale-110 ${isMatch? 'bg-slate-300': ''} w-full transition-slow`}
         >
             <Link 
                 to={path} 
                 className='nav-link flex gap-2 items-center'
                 onClick={()=>{dispatch(closeSidebar)}}
             >
-                <span className='text-primary'>{icon}</span>
+                <span className='text-primary text-2xl'>{icon}</span>
                 <span>{text}</span>
             </Link>
         </li>

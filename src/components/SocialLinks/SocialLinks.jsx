@@ -25,7 +25,7 @@ const SocialLink = ({icon, path, color}) =>{
     return (
         <Link 
             to={path}
-            className={`hover:bg-slate-300 p-2 rounded-full text-3xl ${color}`}
+            className={`hover:bg-slate-300 hover:scale-110 p-2 rounded-full text-3xl transition-all duration-150 ${color}`}
         >
             <span>{icon}</span>
         </Link>
@@ -34,7 +34,7 @@ const SocialLink = ({icon, path, color}) =>{
 
 const SocialLinks = () => {
   return (
-    <div className='flex justify-evenly items-center border-t-2 border-t-primary pt-5'>
+    <div className='flex justify-evenly mt-auto items-center border-t-2 border-t-primary pt-5'>
         {
             links.map(link => <SocialLink  key={link.path} {...link}/>)
         }

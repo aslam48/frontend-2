@@ -5,7 +5,7 @@ import Home from './pages/Home/Home';
 import Error from './components/Error/Error';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-import { setUser, clearUser } from './features/auth/authSlice';
+import Sidebar from './components/Sidebar/Sidebar'
 import { useSelector, useDispatch } from 'react-redux';
 import Profile from './pages/Profile/Profile';
 import ProfileSetup from './pages/ProfileSetup/ProfileSetup';
@@ -52,6 +52,7 @@ function App() {
           <Route path='/service-profile' element={!user? <Navigate to='/'/>: <ProfileSetup />} />
           <Route path='*' element={<Error/>} />
         </Routes>
+        <Sidebar />
     </div>
   );
 }
