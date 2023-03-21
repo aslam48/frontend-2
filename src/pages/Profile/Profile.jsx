@@ -33,9 +33,9 @@ const Profile = () => {
         )
     }
     return (
-        <div className='profile relative'>
+        <div className='profile bg-black relative'>
             <Header />
-            <div className='mt-16 relative'>
+            <div className='relative mt-16'>
                 <header className='profile-header'>
                     <FaUserEdit 
                         className='text-xl text-primary absolute top-10 right-10 bg-slate-500 rounded-full p-1 w-[40px] h-[40px]'
