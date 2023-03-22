@@ -25,9 +25,12 @@ const Sidebar = () => {
             <Brand />
             <hr className='border-primary mt-2'/>
 
-            <div className='mt-2'>
-                <i>Hello, {user.firstName} {user.otherName}</i>
-            </div>
+            { user? (
+                    <div className='mt-2'>
+                        <i>Hello, {user.firstName} {user.otherName}</i>
+                    </div>
+                ): null
+            }   
             <NavItems />
             <SocialLinks />
         </aside>
