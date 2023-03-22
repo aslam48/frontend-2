@@ -33,7 +33,7 @@ const Profile = () => {
         )
     }
     return (
-        <div className='profile bg-black relative'>
+        <div className='profile bg-white text-black relative'>
             <Header />
             <div className='relative mt-16'>
                 <header className='profile-header'>
@@ -43,10 +43,10 @@ const Profile = () => {
                     <h1 className='absolute top-16 font-bold text-2xl'>
                         W<span className='lowercase'>elcome back,</span> {user.firstName} {user.otherName}
                     </h1>
-                    <p className='absolute top-24 text-white w-full lg:w-2/3 text-center'>{personalProfile? personalProfile.bio: 'Your bio here'}</p>
+                    <p className='absolute top-24 text-inherit w-full lg:w-2/3 text-center'>{personalProfile? personalProfile.bio: 'Your bio here'}</p>
                     <img  src={userIcon} alt='user' className='profile-photo'/>
                     <FaPen 
-                        className='text-white absolute -bottom-10 z-20 right-1/2 bg-slate-500 rounded-full p-1 w-[30px] h-[30px]'
+                        className='text-white absolute -bottom-0 z-20 right-1/2 bg-slate-500 rounded-full p-1 w-[30px] h-[30px]'
                     />
                 </header>
                 <div className='profile-body'>
