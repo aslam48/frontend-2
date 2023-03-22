@@ -10,7 +10,7 @@ const navItems = [
         path: '/'
     },
     {
-        text: 'Serices', 
+        text: 'Services', 
         icon: <MdHomeRepairService />,
         path: '/services'
     },

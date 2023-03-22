@@ -1,19 +1,18 @@
 import './App.css';
-import { useEffect } from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Home from './pages/Home/Home';
 import Error from './components/Error/Error';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Sidebar from './components/Sidebar/Sidebar'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import Profile from './pages/Profile/Profile';
 import ProfileSetup from './pages/ProfileSetup/ProfileSetup';
 
 function App() {
   
   const { user } = useSelector(store => store.auth)
-  const dispatch = useDispatch()
+  const {isOpen} = useSelector( store => store.sidebar)
   
   // useEffect(() => {
   //     const getUser = async() =>{
@@ -52,7 +51,7 @@ function App() {
           <Route path='/service-profile' element={!user? <Navigate to='/'/>: <ProfileSetup />} />
           <Route path='*' element={<Error/>} />
         </Routes>
-        <Sidebar />
+        { isOpen && <Sidebar />}
     </div>
   );
 }
