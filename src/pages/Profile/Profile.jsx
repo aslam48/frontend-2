@@ -33,7 +33,7 @@ const Profile = () => {
         )
     }
     return (
-        <div className='profile bg-black relative'>
+        <div className='profile bg-white text-black relative'>
             <Header />
             <div className='relative mt-16'>
                 <header className='profile-header'>
