@@ -7,6 +7,7 @@ import providerImage5 from '../../images/provider5.jpg'
 import FeaturedServiceProvider from '../FeaturedServiceProvider/FeaturedServiceProvider'
 import './FeaturedServiceProviders.css'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { scrollLeft, scrollRight } from '../../utils/base_url'
 
 const services = [
     {
@@ -48,14 +49,7 @@ const services = [
 
 const FeaturedServiceProviders = () => {
     const [fetchedServiceProviders, ] = useState([])
-    const wrapperRef = useRef(null)
- 
-    const scrollLeft = ()=>{
-        wrapperRef.current.scrollLeft += 100
-    }
-    const scrollRight = ()=>{
-        wrapperRef.current.scrollLeft -= 100
-    }
+    const containerRef = useRef(null)
     return (
         <section 
             className='providers bg-slate-100 main-x-p main-y-p group relative'
@@ -67,12 +61,13 @@ const FeaturedServiceProviders = () => {
                 />
             </div>
             <div 
-                ref={wrapperRef}
+                id='providers'
+                ref={containerRef}
                 className='grid overflow-x-auto overflow-y-clip scroll-smooth gap-2 w-full mt-10 pb-1 grid-flow-col auto-cols-[100%] md:auto-cols-[25%] snap-mandatory snap-x'
             >
                 {
-                   fetchedServiceProviders.length < 1? 
-                   (
+                    fetchedServiceProviders.length < 1? 
+                    (
                     services.map(service => 
                             <FeaturedServiceProvider 
                                 key={service.name} 
@@ -89,8 +84,13 @@ const FeaturedServiceProviders = () => {
                    )
                 }
             </div>
-            <FaChevronLeft className='chevron chevron-left' onClick={scrollLeft}/>
-            <FaChevronRight className='chevron chevron-right' onClick={scrollRight}/>
+            <FaChevronLeft 
+                className='chevron chevron-left cursor-pointer' 
+                onClick={() => scrollLeft(containerRef, 200, 'providers')}/>
+            <FaChevronRight 
+                className='chevron chevron-right cursor-pointer' 
+                onClick={() => scrollRight(containerRef, 200, 'providers')}
+            />
         </section>
     )
 }

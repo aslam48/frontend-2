@@ -19,7 +19,7 @@
 
 .services  ::-webkit-scrollbar,
 .providers  ::-webkit-scrollbar{
-  height: 2px;
+  height: 0px;
 }
 
 @layer components {
