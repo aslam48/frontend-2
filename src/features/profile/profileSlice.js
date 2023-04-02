@@ -2,15 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseUrl } from "../../utils/base_url";
 import { setUser } from "../auth/authSlice";
+import {getTodayFormatedDate, toISODate} from '../../utils/date'
 
 export const getAllProfiles = createAsyncThunk(
     'profile/getAllProfiles',
     async(arg, thunkAPI) =>{
         try {
             const res = await axios.get(`${baseUrl}/api/profile`, {
-                "Content-type": "application/json",
                 headers: {
-                    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             })
             return res.data
@@ -24,12 +24,14 @@ export const updateProfile = createAsyncThunk(
     'profile/update',
     async(values, thunkAPI) =>{
         try {
-            const res = await axios.patch(`${baseUrl}/api/profile/personal`, values, {
-                headers: {
-                    'Content-type': 'application/json',
-                    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+            const res = await axios.patch(`${baseUrl}/api/profile/personal`, 
+                values,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
                 }
-            })
+            )
             const {user} = thunkAPI.getState()
             if(res.data.user){
                 thunkAPI.dispatch(setUser(res.data.user))
@@ -42,16 +44,12 @@ export const updateProfile = createAsyncThunk(
     }
 )
 
-const date = new Date()
-let month = date.getMonth() + 1
-month = date.getMonth() < 10 ? '0' + month.toString() : month
-const defaultDateOfBirth = `${date.getFullYear()}-${month}-${date.getDate()}`
 const profileSlice = createSlice({
     name: 'profile',
     initialState: {
         personalProfile: {
             bio: 'my beatiful bio',
-            birthday: defaultDateOfBirth,
+            birthday: getTodayFormatedDate(),
             city: 'my city',
             country: 'my country'
         },
@@ -65,10 +63,12 @@ const profileSlice = createSlice({
     extraReducers: (builder) =>{
         builder
             .addCase(getAllProfiles.fulfilled, (state, {payload}) =>{
-                console.log('fulfilled: ', payload)
                 state.isLoading = false
                 if(payload){
-                    state.personalProfile = payload.personalProfile
+                    state.personalProfile = {
+                        ...payload.personalProfile,
+                        birthday: toISODate(payload.personalProfile.birthday)
+                    }
                     state.serviceProfile = payload.serviceProfile
                 }else{
                     state.errorMessage = 'Something went wrong'
@@ -85,7 +85,14 @@ const profileSlice = createSlice({
             .addCase(updateProfile.fulfilled, (state, {payload}) =>{
                 state.isLoading = false
                 if(payload){
-                    state.personalProfile = payload.personalProfile
+                    const {personalProfile, serviceProfile} = payload
+                    state.personalProfile = {
+                        ...personalProfile, 
+                        bio: personalProfile.bio ?? state.personalProfile.bio,
+                        country: personalProfile.country ?? state.personalProfile.country,
+                        city: personalProfile.city ?? state.personalProfile.city,
+                        birthday: toISODate(personalProfile.birthday) ?? state.personalProfile.birthday
+                    }
                 }else{
                     state.errorMessage = 'Something went wrong'
                 }
