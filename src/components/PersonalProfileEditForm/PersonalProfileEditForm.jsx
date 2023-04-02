@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import FormError from '../FormError/FormError'
 import FormInputError from '../FormInputError/FormInputError'
 import './PersonalProfileEditForm.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -38,6 +37,7 @@ const PersonalProfileEditForm = ({setOpen}) => {
                 const res = await dispatch(updateProfile(values)).unwrap()
                 setOpen(false)
             } catch (error) {
+                console.log(error)
             }
         }
     })
@@ -127,7 +127,7 @@ const PersonalProfileEditForm = ({setOpen}) => {
                 />
             </div>
             <div className='form-group'>
-                <label htmlFor='city'>Date of birth</label>
+                <label htmlFor='dateOfBirth'>Date of birth</label>
                 <input 
                     type='date' 
                     id='dateOfBirth'

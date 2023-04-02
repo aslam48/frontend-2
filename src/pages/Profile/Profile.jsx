@@ -19,11 +19,8 @@ const Profile = () => {
     useEffect(() => {
         dispatch(getAllProfiles())
         .unwrap()
-        .then((res) => {console.log('results: ', res)})
-        .catch((error) => {console.log(error)})
-    }, [])
-    
-    console.log('prof: ', personalProfile)
+    }, [dispatch])
+
     if(isLoading){
         return(
             <div className='w-full h-full text-center'>
