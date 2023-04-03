@@ -4,6 +4,47 @@ import { baseUrl } from "../../utils/base_url";
 import { setUser } from "../auth/authSlice";
 import {getTodayFormatedDate, toISODate} from '../../utils/date'
 
+export const updateProfileBackgroundPhoto = createAsyncThunk(
+    'profile/updateBackgroundPhoto',
+    async(image, thunkAPI) => {
+        try {
+            const formData = new FormData()
+            formData.append('image', image.file)
+            const res = await axios.patch(`${baseUrl}/api/profile/backgroundphoto`, 
+            formData,
+            {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            return res.data
+        } catch (error) {
+            thunkAPI.rejectWithValue(error.data)
+        }
+    }
+)
+
+export const updateProfilePhoto = createAsyncThunk(
+    'profile/updatePhoto',
+    async(image, thunkAPI) => {
+        try {
+            const formData = new FormData()
+            formData.append('image', image.file)
+            const res = await axios.patch(`${baseUrl}/api/profile/photo`, 
+            formData,
+            {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            return res.data
+        } catch (error) {
+            thunkAPI.rejectWithValue(error.data)
+        }
+    }
+)
+
+
 export const getAllProfiles = createAsyncThunk(
     'profile/getAllProfiles',
     async(arg, thunkAPI) =>{
@@ -13,6 +54,7 @@ export const getAllProfiles = createAsyncThunk(
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             })
+            console.log(res.data)
             return res.data
         } catch (error) {
             thunkAPI.rejectWithValue(error.data)
@@ -102,6 +144,42 @@ const profileSlice = createSlice({
                 state.isLoading = false
             })
             .addCase(updateProfile.pending, (state, action)=>{
+                state.isLoading = false
+            })
+
+            // profile background image update/upload
+            .addCase(updateProfileBackgroundPhoto.fulfilled, (state, {payload}) =>{
+                state.isLoading = false
+                if(payload){
+                    state.personalProfile = payload.profile
+                    state.errorMessage = ''
+                }else{
+                    state.errorMessage = 'Upload failed'
+                }
+            })
+            .addCase(updateProfileBackgroundPhoto.rejected, (state, action)=>{
+                state.errorMessage = action.payload
+                state.isLoading = false
+            })
+            .addCase(updateProfileBackgroundPhoto.pending, (state, action)=>{
+                state.isLoading = false
+            })
+
+            // profile image update/upload
+            .addCase(updateProfilePhoto.fulfilled, (state, {payload}) =>{
+                state.isLoading = false
+                if(payload){
+                    state.personalProfile = payload.profile
+                    state.errorMessage = ''
+                }else{
+                    state.errorMessage = 'Upload failed'
+                }
+            })
+            .addCase(updateProfilePhoto.rejected, (state, action)=>{
+                state.errorMessage = action.payload
+                state.isLoading = false
+            })
+            .addCase(updateProfilePhoto.pending, (state, action)=>{
                 state.isLoading = false
             })
     }

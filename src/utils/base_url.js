@@ -10,8 +10,7 @@ export const scrollLeft = (containerRef, yOffset, containerID) =>{
         containerDOM.childNodes[0].remove()
         containerDOM.append(firstChild)
     }
-    containerRef.current.scrollLeft -= yOffset
-    
+    containerRef.current.scrollLeft -= yOffset    
 }
 
 export const scrollRight = (containerRef, xOffSet, containerID) =>{

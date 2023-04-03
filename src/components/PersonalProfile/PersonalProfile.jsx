@@ -49,6 +49,11 @@ const PersonalProfile = ({personalProfile, user, setOpen}) => {
                     <hr />
                     <p>{personalProfile.birthday}</p>
                 </article>
+                <article>
+                    <small className='text-primary'>Bio</small>
+                    <hr />
+                    <p>{personalProfile.bio}</p>
+                </article>
             </>
         </section>
     )
