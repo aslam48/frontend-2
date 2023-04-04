@@ -7,5 +7,6 @@ export const getTodayFormatedDate = () => {
 }
 
 export const toISODate = (date) =>{
+    if(!date) return
     return new Date(date).toISOString().substring(0, 10)
 }

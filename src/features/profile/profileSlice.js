@@ -107,6 +107,7 @@ const profileSlice = createSlice({
             .addCase(getAllProfiles.fulfilled, (state, {payload}) =>{
                 state.isLoading = false
                 if(payload){
+                    console.log(payload.personalProfile.birthday)
                     state.personalProfile = {
                         ...payload.personalProfile,
                         birthday: toISODate(payload.personalProfile.birthday)
