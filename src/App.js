@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect } from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Home from './pages/Home/Home';
-import Error from './components/Error/Error';
+import Error from './pages/Error/Error';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Sidebar from './components/Sidebar/Sidebar'
