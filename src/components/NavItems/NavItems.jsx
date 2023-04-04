@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaUser, FaHome, FaBell, FaEnvelope,  } from 'react-icons/fa'
+import { FaUser, FaHome, FaBell, FaEnvelope, FaBook, FaBookOpen, FaPhone, FaInfo, FaProductHunt,  } from 'react-icons/fa'
 import {MdHomeRepairService} from 'react-icons/md'
 import NavItem from '../NavItem/NavItem'
 
@@ -15,20 +15,20 @@ const navItems = [
         path: '/services'
     },
     {
-        text: 'Messages', 
-        icon: <FaEnvelope />,
-        path: '/messages'
+        text: 'Products', 
+        icon: <FaProductHunt />,
+        path: '/Products'
     },
     {
-        text: 'Notifications', 
-        icon: <FaBell />,
-        path: '/notifications'
+        text: 'About us', 
+        icon: <FaInfo />,
+        path: '/aboutus'
     },
     {
-        text: 'Profile', 
-        icon: <FaUser />,
-        path: '/profile',
-    }
+      text: 'Contact us', 
+      icon: <FaPhone />,
+      path: '/contactus'
+    },
 ]
 
 const NavItems = () => {

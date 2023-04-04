@@ -1,18 +1,27 @@
 import './App.css';
+import { useEffect } from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Home from './pages/Home/Home';
 import Error from './components/Error/Error';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Sidebar from './components/Sidebar/Sidebar'
-import { useSelector} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import Profile from './pages/Profile/Profile';
 import ProfileSetup from './pages/ProfileSetup/ProfileSetup';
+import { getAllProfiles } from './features/profile/profileSlice';
 
 function App() {
   
   const { user } = useSelector(store => store.auth)
   const {isOpen} = useSelector( store => store.sidebar)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllProfiles())
+  }, [])
+  
   
   // useEffect(() => {
   //     const getUser = async() =>{

@@ -16,9 +16,9 @@ const NavItem = ({text, path, icon}) => {
         >
             <Link 
                 to={path} 
-                className='nav-link flex gap-2 items-center'
+                className='nav-link flex gap-7 items-center'
             >
-                <span className='text-primary text-2xl'>{icon}</span>
+                <span className='text-primary text-3xl'>{icon}</span>
                 <span>{text}</span>
             </Link>
         </li>

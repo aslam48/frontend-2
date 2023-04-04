@@ -12,8 +12,16 @@ export const userDropDown = [
         url: '/wallet'
     },
     {
-        text: 'history',
+        text: 'Payment history',
         url: '/history'
+    },
+    {
+        text: 'Notifications',
+        url: '/notifications'
+    },
+    {
+        text: 'Messages',
+        url: '/messages'
     },
     {
         text: 'logout',

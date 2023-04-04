@@ -5,11 +5,11 @@
 
 @layer components {
     .drop-down{
-        @apply w-screen lg:w-auto h-auto absolute left-0 lg:right-0 top-16 flex flex-col text-black bg-slate-100 list-none z-40;
+        @apply  border-2 w-screen lg:w-[200px] h-screen lg:h-auto fixed right-0 lg:right-2 top-0 lg:top-24 flex flex-col justify-start text-black bg-slate-100 list-none z-40;
     }
 
     .drop-down .item{
-        @apply border-b-2 p-4 hover:bg-slate-300 px-8 capitalize
+        @apply py-3 p-4 hover:bg-slate-300 capitalize w-full text-left
     }
 }
 
