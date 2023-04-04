@@ -6,7 +6,6 @@ import { baseUrl } from "../../utils/base_url";
 export const localLogin = createAsyncThunk(
     'auth/localLogin',
     async(values, thunkAPI) =>{
-        console.log('logging in ...: ', values)
         try {
             const res = await axios.post( `${baseUrl}/api/auth/login`, {
                 email: values.email,
