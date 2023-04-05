@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,11 +9,13 @@ import FormInputError from '../FormInputError/FormInputError'
 import { Link, useLocation } from 'react-router-dom'
 import googleIcon from '../../images/google-icon.png'
 import facebookIcon from '../../images/facebook-icon.png'
+import { FaSpinner } from 'react-icons/fa'
 
 
 const SignupForm = () => {
     const dispatch = useDispatch()
     const { message} = useSelector( store => store.auth) 
+    const [isLoading, setIsLoading] = useState(false)
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -35,7 +37,14 @@ const SignupForm = () => {
         }),
         onSubmit: async(values) => {
             dispatch(clearMessage())
-            dispatch(localSignup(values))
+            
+            setIsLoading(true)
+            try {
+                const res = await dispatch(localSignup(values)).unwrap()
+                setIsLoading(false)
+            } catch (error) {
+                setIsLoading(false)
+            }
         }
     })
 
@@ -132,9 +141,16 @@ const SignupForm = () => {
                 
                 <div className='flex justify-between items-center m2-5'>
                     <button 
-                        className='p-2 bg-primary rounded-full font-bold text-white text-center my-4 px-4 '
+                        className={`flex gap-2 items-center p-2 rounded-full font-bold text-white text-center my-4 px-4 ${isLoading? 'bg-slate-300': 'bg-primary'}`}
                         type='submit'
-                        >Submit
+                        disabled={isLoading}
+                        >
+                            { isLoading? (
+                                    <>
+                                        <FaSpinner className='animate-spin text-white text-xl'/> Signing up
+                                    </>
+                                ): 'Submit' 
+                            }                
                     </button> 
                     <div className='flex gap-2 items-center'>
                         <p>Sign up using</p>
