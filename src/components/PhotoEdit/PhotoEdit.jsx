@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
-import { FaFileImage, FaFileUpload, FaImage, FaSpinner, FaTimes, FaUpload } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react'
+import { FaImage, FaSpinner, FaTimes } from 'react-icons/fa';
 import ImageUploading from 'react-images-uploading'
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProfileBackgroundPhoto } from '../../features/profile/profileSlice';
+import { setErrorMessage } from '../../features/profile/profileSlice';
 
 const PhotoEdit = ({title, setShowImageUploader, dispatcher}) => {
     const maxNumber = 1;
     const [images, setImages] = useState([])
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
-    const [errorMsg, setErrorMsg] = useState('')
     const {errorMessage} = useSelector( store => store.profile)
 
     const handleChange = (imageList, addUpdateIndex) =>{
@@ -23,10 +22,14 @@ const PhotoEdit = ({title, setShowImageUploader, dispatcher}) => {
             setLoading(false)
             setShowImageUploader(false)
         } catch (error) {
-            setErrorMsg('Failed to upload image')
             setLoading(false)
         }
     }
+
+    useEffect(()=>{
+        dispatch(setErrorMessage(''))
+    }, [])
+
     return (
         <div className='w-full p-2 lg:p-10 bg-black bg-opacity-70 h-screen fixed top-0 left-0 z-50'>
             <FaTimes 
@@ -49,11 +52,19 @@ const PhotoEdit = ({title, setShowImageUploader, dispatcher}) => {
                         onImageRemove,
                         isDragging,
                         dragProps,
+                        errors
                     })=>(
                         <div className='w-full flex flex-col justify-between text-center m-auto gap-4 lg:w-1/3 bg-slate-50 p-3 lg:p-5 rounded-md shadow-lg h-full'>
                             <h2 className='font-semibold'>{title}</h2>
                             {
-                                errorMessage? <small className='text-red-500 font-semibold'>{errorMessage}</small> : null
+                                errorMessage? <>
+                                    <small className='text-red-500 font-semibold'>{errorMessage}</small>
+                                </> : null
+                            }
+                            {
+                                errors && <div>
+                                    { errors.maxFileSize && <small className='text-red-500 font-semibold'>Image too large (maximum size 1MB)</small>}
+                                </div>
                             }
                             {
                                 imageList.length === 0 ? (
