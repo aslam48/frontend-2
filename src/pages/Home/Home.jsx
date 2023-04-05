@@ -7,8 +7,13 @@ import Hero2 from '../../components/Hero2/Hero2'
 import HireWorker from '../../components/HireWorker/HireWorker'
 import PostJob from '../../components/PostJob/PostJob'
 import WorkerCategories from '../../components/WorkerCategories/WorkerCategories'
+import { useSelector } from 'react-redux'
+import Loading from '../../components/Loading/Loading'
 
 const Home = () => {
+  const {isLoading, } = useSelector( store => store.profile)
+
+  if(isLoading) return <Loading />
   return (
     <div className='w-full mt-0 lg:mt-0'>
         <Header />

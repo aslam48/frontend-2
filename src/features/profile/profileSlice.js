@@ -100,14 +100,15 @@ const profileSlice = createSlice({
         errorMessage: ''
     },
     reducers: {
-        
+        setErrorMessage: (state, {payload}) => {
+            state.errorMessage = payload
+        }
     },
     extraReducers: (builder) =>{
         builder
             .addCase(getAllProfiles.fulfilled, (state, {payload}) =>{
                 state.isLoading = false
                 if(payload){
-                    console.log(payload.personalProfile.birthday)
                     state.personalProfile = {
                         ...payload.personalProfile,
                         birthday: toISODate(payload.personalProfile.birthday)
@@ -185,5 +186,5 @@ const profileSlice = createSlice({
             })
     }
 })
-
+export const {setErrorMessage} = profileSlice.actions
 export default profileSlice.reducer

@@ -9,6 +9,7 @@ import './Profile.css'
 import PersonalProfile from '../../components/PersonalProfile/PersonalProfile'
 import PersonalProfileEditForm from '../../components/PersonalProfileEditForm/PersonalProfileEditForm'
 import PhotoEdit from '../../components/PhotoEdit/PhotoEdit'
+import Loading from '../../components/Loading/Loading'
 
 
 const Profile = () => {
@@ -25,11 +26,8 @@ const Profile = () => {
     }, [dispatch])
 
     if(isLoading){
-        return(
-            <div className='w-full h-full text-center'>
-                <Header />
-                <h1 className='font-bold mt-40'>Loading profile. Please wait...</h1>
-            </div>
+        return( 
+            <Loading />
         )
     }
     return (
