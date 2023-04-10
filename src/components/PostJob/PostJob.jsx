@@ -26,7 +26,7 @@ const PostJob = () => {
                 className='flex-1'
             >
                 <img 
-                    src={sectionImage} 
+                    src="https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/post-job1.jpg"
                     alt='post-job' 
                     className='w-full h-[350px] rounded-md object-cover'
                 />

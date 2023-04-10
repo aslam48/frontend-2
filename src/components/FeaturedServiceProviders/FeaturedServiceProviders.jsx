@@ -13,35 +13,35 @@ const services = [
     {
         id: 1,
         name: 'Sally James',
-        image: providerImage1,
+        image: "https://github.com/Runor-world/frontend/blob/main/src/images/provider1.jpg?raw=true",
         rating: 4,
         service: 'Web development'
     }, 
     {
         id: 2,
         name: 'Salisu Umar',
-        image: providerImage2,
+        image: "https://github.com/Runor-world/frontend/blob/main/src/images/provider2.jpg?raw=true",
         rating: 5,
         service: 'Catering'
     }, 
     {
         id: 3,
         name: 'Harry Fred',
-        image: providerImage3,
+        image: "https://github.com/Runor-world/frontend/blob/main/src/images/provider3.jpg?raw=true",
         rating: 5,
         service: 'Photography'
     }, 
     {
         id: 4,
         name: 'Kenneth Olamide',
-        image: providerImage4,
+        image: "https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/provider4.jpg",
         rating: 4,
         service: 'Electrical'
     }, 
     {
         id: 5,
         name: 'Mary John',
-        image: providerImage5,
+        image: "https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/provider5.jpg",
         rating: 5,
         service: 'Catering'
     }, 

@@ -13,27 +13,27 @@ import { scrollLeft, scrollRight } from '../../utils/base_url'
 const services = [
     {
         name: 'Cleaning',
-        image: cleaningImage,
+        image: "https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/cleaner.jpg",
         providerPopulation: 200,
     }, 
     {
         name: 'Mechanic',
-        image: mechanicImage,
+        image: "https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/mechanic.jpg",
         providerPopulation: 100,
     }, 
     {
         name: 'Catering',
-        image: cookImage,
+        image: "https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/cook.jpg",
         providerPopulation: 56,
     }, 
     {
         name: 'Electrical',
-        image: electricianImage,
+        image: "https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/electrician.jpg",
         providerPopulation: 60,
     }, 
     {
         name: 'Dry cleaning',
-        image: dryCleaningImage,
+        image: "https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/cleaner2.jpg",
         providerPopulation: 110,
     }, 
 ]

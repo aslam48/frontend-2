@@ -25,7 +25,7 @@ const HireWorker = () => {
                 className='flex-1'
             >
                 <img 
-                    src={sectionImage} 
+                    src="https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/provider1.jpg"
                     alt='post-job' 
                     className='w-full h-[350px] rounded-md object-cover'
                 />

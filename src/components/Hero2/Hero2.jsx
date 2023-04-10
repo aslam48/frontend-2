@@ -25,7 +25,7 @@ const Hero = () => {
 
     return (
         <div className='relative w-full h-screen'>
-            <img src={heroImage} className='h-full w-full object-cover'/>
+            <img src="https://raw.githubusercontent.com/Runor-world/frontend/main/src/images/hero-photo.jpg" className='h-full w-full object-cover'/>
             <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 text-white flex flex-col justify-center'>
                 <section 
                     className='grid grid-cols-1 lg:grid-cols-2 main-x-p h-full gap-10 relative content-center'
@@ -56,7 +56,7 @@ const Hero = () => {
                             Get Started
                         </Link>
                     </div>
-                    <div 
+                    {/* <div 
                         className='w-full h-full relative'
                     >
                         <img 
@@ -70,7 +70,7 @@ const Hero = () => {
                             className={`h-[200px] lg:h-full w-full mx-auto object-cover aspect-auto rounded-full scale-110 lanimate-pulse transition-all duration-200 absolute z-${zIndex[1]}`}
                         />
                         
-                    </div>
+                    </div> */}
                 </section>
             </div>
         </div>
