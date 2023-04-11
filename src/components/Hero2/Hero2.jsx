@@ -13,7 +13,7 @@ const Hero = () => {
         const timeInterval = setInterval(()=>{
             if(zIndex[0] === 20){
                 setZindex([10, 20])
-                
+
             }else{
                 setZindex([20, 10])
             }
@@ -74,6 +74,7 @@ const Hero = () => {
                     </div> */}
                 </section>
             </div>
+            
         </div>
     )
 }
