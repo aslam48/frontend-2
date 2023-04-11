@@ -19,6 +19,7 @@ const Hero = () => {
             }
         }, 5000)
         return () => {
+        
             clearTimeout(timeInterval)
         }
     }, [zIndex])
